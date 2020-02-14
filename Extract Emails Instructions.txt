@@ -1,0 +1,36 @@
+1. Create a list of callsigns in _callsigns.txt
+2. Execute qrz_extract_emails in the Command Prompt
+3. *** Current BUG: All 0 callsigns create an error in Python3:
+
+Traceback (most recent call last):
+  File "qrz_database_xml_server_search_extract_email_1-01.py", line 399, in <module>
+    xmlsessionfile = getxml(url)
+  File "qrz_database_xml_server_search_extract_email_1-01.py", line 182, in getxml
+    resp = urllib.request.urlopen(req)
+  File "c:\PROGRA~2\Python\Python38-32\lib\urllib\request.py", line 222, in urlopen
+    return opener.open(url, data, timeout)
+  File "c:\PROGRA~2\Python\Python38-32\lib\urllib\request.py", line 525, in open
+    response = self._open(req, data)
+  File "c:\PROGRA~2\Python\Python38-32\lib\urllib\request.py", line 542, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+  File "c:\PROGRA~2\Python\Python38-32\lib\urllib\request.py", line 502, in _call_chain
+    result = func(*args)
+  File "c:\PROGRA~2\Python\Python38-32\lib\urllib\request.py", line 1346, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+  File "c:\PROGRA~2\Python\Python38-32\lib\urllib\request.py", line 1317, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+  File "c:\PROGRA~2\Python\Python38-32\lib\http\client.py", line 1230, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "c:\PROGRA~2\Python\Python38-32\lib\http\client.py", line 1241, in _send_request
+    self.putrequest(method, url, **skips)
+  File "c:\PROGRA~2\Python\Python38-32\lib\http\client.py", line 1096, in putrequest
+    self._output(self._encode_request(request))
+  File "c:\PROGRA~2\Python\Python38-32\lib\http\client.py", line 1176, in _encode_request
+    return request.encode('ascii')
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 63-64: ordinal not in range(128)
+
+All 0 callsigns will have to be parsed manually until bug fixed.
+
+4. At each error, remove all previously extracted callsigns from _callsigns.txt
+5. Go to Step 2 until all callsigns are completed
+6. Rename _emails.csv
